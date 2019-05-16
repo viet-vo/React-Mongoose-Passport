@@ -18,6 +18,10 @@ if (process.env.NODE_ENV === 'production') {
 // app.use(routes);
 mongoose.connect(MONGOURI, { useNewUrlParser: true});
 
+app.get("/test", (req, res) => {
+    res.json({ test: "this came from the backend" })
+})
+
 app.listen(PORT, () => {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`)
 });
