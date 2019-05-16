@@ -6,11 +6,11 @@ import React, { Component } from 'react';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles';
 // import Grid from '@material-ui/core/Grid';
-import { lightBlue } from '@material-ui/core/colors';
+import { grey } from '@material-ui/core/colors';
 
-import API from './utils/test';
+// import API from './utils/test';
 const theme = createMuiTheme({
-  palette: lightBlue,
+  palette: grey,
   typography: {
     useNextVariants: true,
   },
@@ -21,17 +21,17 @@ class App extends Component {
     data: []
   };
   
-  componentDidMount() {
-    API.getTestData()
-      .then(res => this.setState({data: res.data }))
-        .catch(err => console.log(err));
-  }
+  // componentDidMount() {
+  //   API.getTestData()
+  //     .then(res => this.setState({data: res.data }))
+  //       .catch(err => console.log(err));
+  // }
 
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <h1>test</h1>   
-        <h2>{this.state.data.test}</h2>     
+        {/* <AppBar /> */}
+        {/* <h2>{this.state.data.test}</h2>      */}
       </MuiThemeProvider>
     )
   };
