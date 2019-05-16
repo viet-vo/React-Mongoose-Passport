@@ -1,0 +1,8 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "git@github.com:viet-vo/React-Mongoose-Passport.git",
+  "author": "Viet Vo <viet.allen.qvo@gmail.com>",
+  "license": "MIT"
+}
