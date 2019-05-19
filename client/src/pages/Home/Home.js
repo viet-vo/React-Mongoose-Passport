@@ -49,14 +49,20 @@ export class Home extends Component {
           >
             <Grid 
               container
-              spacing={0}
+              spacing={8}
               direction="column"
               alignItems="center"
               justify="center"
               >
                 {cardProp.map(index => {
                   console.log(index)
-                  return(<GridCard {...index} key={index.id}/>)
+                  return(
+                    <Grid
+                      item
+                    >
+                    <GridCard {...index} key={index.id}/>
+                    </Grid>
+                    )
                 })}
               </Grid>
           </Grid>
@@ -82,9 +88,25 @@ export class Home extends Component {
             item
             xs={3}
           >
-
+            <Grid 
+              container
+              spacing={8}
+              direction="column"
+              alignItems="center"
+              justify="center"
+              >
+                {cardProp.map(index => {
+                  console.log(index)
+                  return(
+                    <Grid
+                      item
+                    >
+                    <GridCard {...index} key={index.id}/>
+                    </Grid>
+                    )
+                })}
+              </Grid>
           </Grid>
-            
         </Grid>
       </div>
     )
