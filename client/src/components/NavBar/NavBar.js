@@ -22,7 +22,8 @@ const styles = {
 };
 
 function NavBar(props) {
-  const { classes } = props;
+  const { classes, name } = props;
+  console.log(props)
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -31,9 +32,10 @@ function NavBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            Home Page
+            {name} Page
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button href="/Login" color="inherit">Login</Button>
+          <Button href="/UserCreate" color="inherit">Sign Up</Button>
         </Toolbar>
       </AppBar>
     </div>

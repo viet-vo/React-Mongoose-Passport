@@ -5,10 +5,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles';
-// import Grid from '@material-ui/core/Grid';
 import { grey } from '@material-ui/core/colors';
 
 import Home from './pages/Home';
+import Login from './pages/Login';
+import UserCreate from './pages/UserCreate';
 
 // import API from './utils/test';
 const theme = createMuiTheme({
@@ -34,9 +35,9 @@ class App extends Component {
         <Grid>
           <Router>
             <Switch>
-              <Route path="/" render={() => <Home {...this.state} onUpdate={this.handleUpdate.bind(this)} />} />} />
-              {/* <Route path="/" exact component={Home} /> */}
-              {/* <Route path="/" exact component={Home} /> */}
+              <Route path="/" exact render={() => <Home {...this.state} onUpdate={this.handleUpdate.bind(this)} />} />} />
+              <Route path="/Login" component={Login} />
+              <Route path="/UserCreate" component={UserCreate} />
             </Switch>
           </Router>
         </Grid>
