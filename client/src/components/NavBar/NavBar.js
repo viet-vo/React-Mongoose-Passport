@@ -38,7 +38,7 @@ function NavBar(props) {
       </AppBar>
     </div>
   );
-}
+};
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
