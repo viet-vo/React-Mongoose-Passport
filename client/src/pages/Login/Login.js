@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-// import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+// import Divider from '@material-ui/core/Divider';
 import NavBar from '../../components/NavBar';
 
 export class Login extends Component {
@@ -22,6 +22,8 @@ export class Login extends Component {
         this.setState({ [id]: value });
     };
 
+    // todo: handle form submit
+
     render() {
         const { page } = this.state;
         return (
@@ -35,8 +37,7 @@ export class Login extends Component {
                 justify="center"
                 style={{ minHeight: '75vh' }}
             >
-                <Paper
-                >
+                <Paper>
                     <Grid
                         container
                         alignItems="center"
@@ -62,6 +63,7 @@ export class Login extends Component {
                         />
                         <Button
                             style={{margin: "1em"}}
+                            disabled={!(this.state.username && this.state.password)}
                         >
                             Submit
                         </Button>
