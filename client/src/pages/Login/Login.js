@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
+// import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import NavBar from '../../components/NavBar';
@@ -45,7 +45,7 @@ export class Login extends Component {
                         <Typography variant="h5" component="h2" style={{margin: "1em"}}>
                                 Log into your user account
                         </Typography>
-                        <Divider variant="middle"/>
+                        {/* <Divider variant="middle"/> */}
                         <TextField 
                             id="username"
                             label="Enter Username"

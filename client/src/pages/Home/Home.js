@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
-import NavBar from '../../components/NavBar';
 import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import NavBar from '../../components/NavBar';
 import GridCard from '../../components/GridCard';
 
 export class Home extends Component {
@@ -27,16 +27,19 @@ export class Home extends Component {
         footer: "This is the information footer",
         id: 2,
       },
-    ]
+    ],
+    pageName: {
+      name: "Home"
+    }
   }
   componentDidMount() {
     console.log(this.props)
   } 
   render() {
-    const { cardProp } = this.state;
+    const { cardProp, pageName } = this.state;
     return (
       <div>
-        <NavBar />
+        <NavBar {...pageName} />
         <Grid
           container
           direction="row"
@@ -59,8 +62,9 @@ export class Home extends Component {
                   return(
                     <Grid
                       item
+                      key={index.id} 
                     >
-                    <GridCard {...index} key={index.id}/>
+                      <GridCard {...index} />
                     </Grid>
                     )
                 })}
@@ -100,8 +104,9 @@ export class Home extends Component {
                   return(
                     <Grid
                       item
+                      key={index.id}
                     >
-                    <GridCard {...index} key={index.id}/>
+                    <GridCard {...index} />
                     </Grid>
                     )
                 })}
