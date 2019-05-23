@@ -1,9 +1,7 @@
 const router = require('express').Router();
-// controller path
+const userController = require('../../controllers');
 
 router.route("/a")
-    .get(function(req, res) {
-        res.json({test: "the subroute's test passed"})
-    });
+    .post(userController.create);
 
 module.exports = router;
