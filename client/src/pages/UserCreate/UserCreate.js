@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import NavBar from '../../components/NavBar';
 
+import submitDataAPI from '../../utils/API';
+
 export class UserCreate extends Component {
     state = {
         data: [],
@@ -23,8 +25,18 @@ export class UserCreate extends Component {
         this.setState({ [id]: value });
     };
 
-    handleFormSubmit = () => {
-        console.log("test")
+    handleFormSubmit = event => {
+        event.preventDefault();
+        if (this.state.username && this.state.password && this.state.firstname && this.state.lastname) {
+            submitDataAPI.postUserData({
+                username: this.state.username,
+                password: this.state.password,
+                firstname: this.state.firstname,
+                lastname: this.state.lastname,
+            })
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+        };
     };
 
     render() {
@@ -73,6 +85,7 @@ export class UserCreate extends Component {
                             <TextField 
                                 id="password"
                                 label="Enter Password"
+                                type="password"
                                 value={this.state.password}
                                 onChange={this.updateInput.bind(this)}
                                 style={{margin: "0.5em"}}
@@ -80,6 +93,7 @@ export class UserCreate extends Component {
                             <Button
                                 style={{margin: "1em"}}
                                 disabled={!(this.state.username && this.state.password)}
+                                onClick={this.handleFormSubmit}
                             >
                                 Submit
                             </Button>
