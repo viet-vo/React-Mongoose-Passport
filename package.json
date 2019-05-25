@@ -1,0 +1,16 @@
+{
+  "name": "main_folder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:viet-vo/React-Mongoose-Passport.git",
+  "author": "Viet Vo <viet.allen.qvo@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run server-start\" \"npm run client-start\"",
+    "client-start": "cd client && yarn start",
+    "server-start": "cd server && nodemon server"
+  }
+}
