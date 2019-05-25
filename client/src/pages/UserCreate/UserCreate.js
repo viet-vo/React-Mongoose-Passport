@@ -25,6 +25,10 @@ export class UserCreate extends Component {
         this.setState({ [id]: value });
     };
 
+    clearUserData = () => {
+        this.setState({ username: "", password: "", lastname: "", firstname: "", })
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.username && this.state.password && this.state.firstname && this.state.lastname) {
@@ -34,7 +38,7 @@ export class UserCreate extends Component {
                 firstname: this.state.firstname,
                 lastname: this.state.lastname,
             })
-            .then(res => console.log(res))
+            .then(res => this.clearUserData())
             .catch(err => console.log(err));
         };
     };
