@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "concurrently \"npm run server-start\" \"npm run client-start\"",
-    "client-start": "cd client && yarn start",
+    "client-start": "cd client && npm start",
     "server-start": "cd server && nodemon server"
   }
 }
