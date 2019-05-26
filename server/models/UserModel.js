@@ -8,20 +8,20 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      require: true,
+      require: false,
       unique: true,
     },
     password: {
       type: String,
-      require: true,
+      require: false,
     },
     firstname: {
       type: String,
-      require: true,
+      require: false,
     },
     lastname: {
       type: String,
-      require: true,
+      require: false,
     }
   },
   {

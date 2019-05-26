@@ -38,7 +38,7 @@ export class UserCreate extends Component {
                 firstname: this.state.firstname,
                 lastname: this.state.lastname,
             })
-            .then(res => this.clearUserData())
+            .then(res => console.log(res), this.clearUserData())
             .catch(err => console.log(err));
         };
     };
@@ -63,7 +63,7 @@ export class UserCreate extends Component {
                             direction="column"
                         >
                             <Typography variant="h5" component="h2" style={{margin: "1em"}}>
-                                Log into your user account
+                                Create a User Account
                             </Typography>
                             <TextField 
                                 id="firstname"
@@ -96,7 +96,7 @@ export class UserCreate extends Component {
                             />
                             <Button
                                 style={{margin: "1em"}}
-                                disabled={!(this.state.username && this.state.password)}
+                                disabled={!(this.state.username && this.state.password && this.state.firstname && this.state.lastname)}
                                 onClick={this.handleFormSubmit}
                             >
                                 Submit

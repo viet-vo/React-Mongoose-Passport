@@ -4,8 +4,9 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-// import Divider from '@material-ui/core/Divider';
 import NavBar from '../../components/NavBar';
+
+import submitUserLoginAPI from '../../utils/API';
 
 export class Login extends Component {
     state = {
@@ -22,7 +23,21 @@ export class Login extends Component {
         this.setState({ [id]: value });
     };
 
-    // todo: handle form submit
+    clearUserData = () => {
+        this.setState({ username: "", password: "", })
+    };
+
+    handleFormInput = event => {
+        event.preventDefault();
+        if (this.state.username && this.state.password) {
+            submitUserLoginAPI.postUserLogin({
+                username: this.state.username,
+                password: this.state.password,
+            })
+            .then(res => console.log(res), this.clearUserData())
+            .catch(err => console.log(err));
+        };
+    };
 
     render() {
         const { page } = this.state;
@@ -46,7 +61,6 @@ export class Login extends Component {
                         <Typography variant="h5" component="h2" style={{margin: "1em"}}>
                                 Log into your user account
                         </Typography>
-                        {/* <Divider variant="middle"/> */}
                         <TextField 
                             id="username"
                             label="Enter Username"
