@@ -78,6 +78,7 @@ export class Login extends Component {
                         <Button
                             style={{margin: "1em"}}
                             disabled={!(this.state.username && this.state.password)}
+                            onClick={this.handleFormInput}
                         >
                             Submit
                         </Button>
