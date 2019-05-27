@@ -7,7 +7,7 @@ router.route("/newUser")
     })
     .post(userController.userCreate);
 
-// router.route("/login")
-//     .post()
+router.route("/checkLogin")
+    .post(userController.userLogin);
 
 module.exports = router;

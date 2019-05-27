@@ -1,3 +1,4 @@
+const passport = require('passport');
 const db = require('../models');
 
 module.exports = {
@@ -7,8 +8,9 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    // userLogin: function (req, res) {
-    //     db.UserModel
-    //         .find({req})
-    // }
+    userLogin: 
+        passport.authenticate('local'),
+        function(req, res) {
+            res.resdirect('/users/' + req.user.username)
+        }
 };
