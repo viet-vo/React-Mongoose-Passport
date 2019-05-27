@@ -44,12 +44,13 @@ userSchema.pre("save", function(next) {
   }
 );
 
-userSchema.methods.comparePassword = function(candidatePassword, next) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-    if (err) return next(err);
-    next(null, isMatch);
-  });
-};
+// TODO figure out how to implement this custom method in config/passport
+// userSchema.methods.comparePassword = function(candidatePassword, next) {
+//   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+//     if (err) return next(err);
+//     next(null, isMatch);
+//   });
+// };
 
 const User = mongoose.model("Users", userSchema);
 
