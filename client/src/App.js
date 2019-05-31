@@ -1,6 +1,7 @@
 // MAIN APP FILE
 // Dependencies and associated COMPONENTS
 import React, { Component } from 'react';
+import  { createStore } from 'redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
