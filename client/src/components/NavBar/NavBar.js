@@ -34,6 +34,7 @@ function NavBar(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             {name} Page
           </Typography>
+          <Button href="/Profile" color="inherit">Profile</Button>
           <Button href="/Login" color="inherit">Login</Button>
           <Button href="/UserCreate" color="inherit">Sign Up</Button>
         </Toolbar>
