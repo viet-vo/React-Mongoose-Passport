@@ -16,6 +16,16 @@ const theme = createMuiTheme({
   palette: grey,
   typography: {
     useNextVariants: true,
+  }, 
+  overrides: {
+    MuiButton: {
+      root: {
+        color: 'white',
+        '&:hover': {
+          backgroundColor: 'purple'
+        }
+      }
+    }
   },
 })
 
