@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const userController = require('../../controllers/controller');
 
-router.route("/a")
+router.route("/newUser")
     .get(function(req, res) {
         res.json({test: "this get request from user/a works"})
     })

@@ -19,6 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 mongoose.connect(MONGOURI, { useNewUrlParser: true});
+mongoose.set('useCreateIndex', true);
 
 app.use(routes);
 
