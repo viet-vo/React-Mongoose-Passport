@@ -1,6 +1,8 @@
 // MAIN APP FILE
 // Dependencies and associated COMPONENTS
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import rootReducers from './reducers'
 import  { createStore } from 'redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
@@ -20,6 +22,8 @@ const theme = createMuiTheme({
   },
 })
 
+const store = createStore(rootReducers)
+
 class App extends Component {
   state = {
     data: [],
@@ -32,17 +36,19 @@ class App extends Component {
 
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
-        <Grid>
-          <Router>
-            <Switch>
-              <Route path="/" exact render={() => <Home {...this.state} onUpdate={this.handleUpdate.bind(this)} />} />} />
-              <Route path="/Login" component={Login} />
-              <Route path="/UserCreate" component={UserCreate} />
-            </Switch>
-          </Router>
-        </Grid>
-      </MuiThemeProvider>
+      <Provider store={store}>
+        <MuiThemeProvider theme={theme}>
+          <Grid>
+            <Router>
+              <Switch>
+                <Route path="/" exact render={() => <Home {...this.state} onUpdate={this.handleUpdate.bind(this)} />} />} />
+                <Route path="/Login" component={Login} />
+                <Route path="/UserCreate" component={UserCreate} />
+              </Switch>
+            </Router>
+          </Grid>
+        </MuiThemeProvider>
+      </Provider>
     )
   };
 };
