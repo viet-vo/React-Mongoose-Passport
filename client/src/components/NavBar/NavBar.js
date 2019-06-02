@@ -26,7 +26,7 @@ function NavBar(props) {
   // console.log(props)
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color="none">
         <Toolbar>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" href="/">
             <MenuIcon />
