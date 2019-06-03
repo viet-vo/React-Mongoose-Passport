@@ -43,6 +43,10 @@ class App extends Component {
     username: null,
    };
 
+   componentDidMount() {
+     this.getUser();
+   };
+
   render() {
     return (
       <MuiThemeProvider theme={theme}>

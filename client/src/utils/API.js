@@ -7,5 +7,10 @@ export default {
     postUserLogin: (loginInput) => {
         return axios.post("/user/checkLogin", loginInput);
     },
-    
+    getUser: () => {
+        return axios.get("/user/");
+    },
+    postLogout: (logoutUser) => {
+        return axios.post("/logout", logoutUser); 
+    },
 }
