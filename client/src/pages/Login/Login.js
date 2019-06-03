@@ -7,6 +7,8 @@ import TextField from '@material-ui/core/TextField';
 // import Divider from '@material-ui/core/Divider';
 import NavBar from '../../components/NavBar';
 
+import checkLoginAPI from '../../utils/API';
+
 export class Login extends Component {
     state = {
         data: [],
@@ -22,7 +24,18 @@ export class Login extends Component {
         this.setState({ [id]: value });
     };
 
-    // todo: handle form submit
+    handleFormSubmit  = event => {
+        event.preventDefault();
+        if (this.state.username && this.state.password) {
+            checkLoginAPI.postUserLogin({
+                username: this.state.username,
+                password: this.state.password,
+            })
+            .then(res => console.log(res))
+            // todo redirect to push history home page
+            .catch(err => console.log(err));
+        };
+    };
 
     render() {
         const { page } = this.state;
@@ -64,6 +77,7 @@ export class Login extends Component {
                         <Button
                             style={{margin: "1em"}}
                             disabled={!(this.state.username && this.state.password)}
+
                         >
                             Submit
                         </Button>

@@ -1,14 +1,18 @@
-// MAIN APP FILE
-// Dependencies and associated COMPONENTS
+// Dependencies 
+// !^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles';
+// !^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+// Components
+// !^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 import Home from './pages/Home';
 import Login from './pages/Login';
 import UserCreate from './pages/UserCreate';
+// !^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 // import API from './utils/test';
 const theme = createMuiTheme({
@@ -34,12 +38,10 @@ const theme = createMuiTheme({
 class App extends Component {
   state = {
     data: [],
-    string: "test"
+    string: "test",
+    loggedIn: false,
+    username: null,
    };
-
-  handleUpdate (updateProps) {
-    this.setState({ string: updateProps});
-  }
 
   render() {
     return (
@@ -47,7 +49,7 @@ class App extends Component {
         <Grid>
           <Router>
             <Switch>
-              <Route path="/" exact render={() => <Home {...this.state} onUpdate={this.handleUpdate.bind(this)} />} />} />
+              <Route path="/" exact render={() => <Home {...this.state} />} />
               <Route path="/Login" component={Login} />
               <Route path="/UserCreate" component={UserCreate} />
             </Switch>
