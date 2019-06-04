@@ -37,18 +37,28 @@ const theme = createMuiTheme({
 })
 
 class App extends Component {
-  state = {
-    data: [],
-    string: "test",
-    loggedIn: false,
-    username: null,
-   };
+  constructor() {
+    super()
+    this.state = {
+      data: [],
+      string: "test",
+      loggedIn: false,
+      username: null,
+    };
 
-   componentDidMount() {
-     this.getUser();
-   };
+    this.getUser = this.getUser.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+  };
+  
+  componentDidMount() {
+    this.getUser();
+  };
 
-   getUser() {
+  updateUser (userObject) {
+    this.setState(userObject)
+  };
+
+  getUser() {
     getCurrentUser.getUser()
     .then(res => {
       console.log('Get user response: ');
@@ -76,7 +86,7 @@ class App extends Component {
           <Router>
             <Switch>
               <Route path="/" exact render={() => <Home {...this.state} />} />
-              <Route path="/Login" render={() => <Login {...this.state} />} />
+              <Route path="/Login" render={() => <Login updateUser={this.updateUser} />} />
               <Route path="/UserCreate" component={UserCreate} />
             </Switch>
           </Router>

@@ -44,12 +44,14 @@ userSchema.pre("save", function(next) {
   }
 );
 
-userSchema.methods.comparePassword = function(candidatePassword, next) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-    if (err) return next(err);
-    next(null, isMatch);
-  });
-};
+userSchema.methods = {
+	checkPassword: function (inputPassword) {
+		return bcrypt.compareSync(inputPassword, this.password)
+	},
+	hashPassword: plainTextPassword => {
+		return bcrypt.hashSync(plainTextPassword, 10)
+	}
+}
 
 const User = mongoose.model("Users", userSchema);
 

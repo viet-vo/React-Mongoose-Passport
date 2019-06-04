@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const routes = require("./routes");
+const passport = require('./config');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const mongoDB = require('./config/db');
@@ -19,6 +20,8 @@ app.use(morgan('dev'));
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 };
+app.use(passport.initialize())
+app.use(passport.session()) // calls the deserializeUser
 
 app.use(session({
     secret: SECRET,

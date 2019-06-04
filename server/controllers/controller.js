@@ -8,15 +8,18 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    checkLogin: function (req, res) {
-        passport.authenticate('local'), 
-        console.log('logged in', req.user);
-        const userInfo = {
-            username: req.user.username
-        };
-        res.send(userInfo);
+    login: function (req, res) {
+        console.log('routes/user.js, login, req.body: ');
+        console.log(req.body)
+        passport.authenticate('local'),(req, res) => {
+            console.log('logged in', req.user);
+            var userInfo = {
+                username: req.user.username
+            };
+            res.send(userInfo);
+        }
     },
-    userLoggedIn: function (req, res) {
+    userLoggedIn: function (req, res, next) {
         console.log('===== user!!======')
         console.log(req.user)
         if (req.user) {

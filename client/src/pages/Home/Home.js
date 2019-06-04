@@ -33,7 +33,7 @@ export class Home extends Component {
     }
   }
   componentDidMount() {
-    // console.log(this.props)
+    console.log(this.props)
   } 
   render() {
     const { cardProp, pageName } = this.state;
