@@ -33,7 +33,7 @@ export class Home extends Component {
     }
   }
   componentDidMount() {
-    console.log(this.props)
+    // console.log(this.props)
   } 
   render() {
     const { cardProp, pageName } = this.state;
@@ -58,7 +58,7 @@ export class Home extends Component {
               justify="center"
               >
                 {cardProp.map(index => {
-                  console.log(index)
+                  // console.log(index)
                   return(
                     <Grid
                       item
@@ -100,7 +100,7 @@ export class Home extends Component {
               justify="center"
               >
                 {cardProp.map(index => {
-                  console.log(index)
+                  // console.log(index)
                   return(
                     <Grid
                       item

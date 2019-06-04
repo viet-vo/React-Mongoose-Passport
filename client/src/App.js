@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles';
+import getCurrentUser from './utils/API';
 // !^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 // Components
@@ -44,7 +45,28 @@ class App extends Component {
    };
 
    componentDidMount() {
-    //  this.getUser();
+     this.getUser();
+   };
+
+   getUser() {
+    getCurrentUser.getUser()
+    .then(res => {
+      console.log('Get user response: ');
+      console.log(res.data);
+      if (res.data.user) {
+        console.log('Get User: There is a user saved in the server session: ')
+        this.setState({
+          loggedIn: true,
+          username: res.data.user.username
+        });
+      } else {
+        console.log('Get user: no user');
+        this.setState({
+          loggedIn: false,
+          username: null
+        });
+      };
+    });
    };
 
   render() {
@@ -54,7 +76,7 @@ class App extends Component {
           <Router>
             <Switch>
               <Route path="/" exact render={() => <Home {...this.state} />} />
-              <Route path="/Login" component={Login} />
+              <Route path="/Login" render={() => <Login {...this.state} />} />
               <Route path="/UserCreate" component={UserCreate} />
             </Switch>
           </Router>
