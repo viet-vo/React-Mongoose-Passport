@@ -58,7 +58,7 @@ export class Home extends Component {
               justify="center"
               >
                 {cardProp.map(index => {
-                  console.log(index)
+                  // console.log(index)
                   return(
                     <Grid
                       item
@@ -100,7 +100,7 @@ export class Home extends Component {
               justify="center"
               >
                 {cardProp.map(index => {
-                  console.log(index)
+                  // console.log(index)
                   return(
                     <Grid
                       item
