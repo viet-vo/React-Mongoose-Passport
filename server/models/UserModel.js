@@ -22,7 +22,15 @@ const userSchema = new Schema(
     lastname: {
       type: String,
       require: true,
-    }
+    },
+    bio: {
+      type: String,
+      require: false,
+    },
+    age: {
+      type: Number,
+      require: false,
+    },
   },
   {
     versionKey: false

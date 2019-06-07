@@ -4,6 +4,8 @@ import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import NavBar from '../../components/NavBar';
 import GridCard from '../../components/GridCard';
+import Button from '@material-ui/core/Button';
+import logoutAPI from '../../utils/API';
 
 export class Home extends Component {
   state = {
@@ -31,10 +33,22 @@ export class Home extends Component {
     pageName: {
       name: "Home"
     }
-  }
-  componentDidMount() {
-    console.log(this.props)
-  } 
+  };
+  logout(event) {
+    event.preventDefault();
+    console.log('logging out');
+    logoutAPI.postLogout()
+      .then(res => {
+        console.log(res.data);
+        if (res.status(200)) {
+          this.props.updateUser({
+            loggedIn: false,
+            username: null,
+          });
+        };
+      })
+      .catch(err => console.log(err));
+  };
   render() {
     const { cardProp, pageName } = this.state;
     return (
@@ -82,9 +96,20 @@ export class Home extends Component {
               justify="center"
               >
               <Paper>
-                <Typography variant="h5" component="h2" style={{margin: "1em"}}>
-                  Welcome to your Home Page
-                </Typography>
+                <Grid
+                  container
+                  alignItems="center"
+                  direction="column"
+                > 
+                  <Typography variant="h5" component="h2" style={{margin: "1em"}}>
+                    Welcome to your Home Page
+                  </Typography>
+                  {this.props.loggedIn ? (
+                    <Button to="#" onClick={this.logout}>Logout</Button>
+                  ) : (
+                    <Button to="/Login">Login</Button>
+                  )}
+                </Grid>
               </Paper>
             </Grid>
           </Grid>

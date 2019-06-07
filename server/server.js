@@ -20,17 +20,17 @@ app.use(morgan('dev'));
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 };
-app.use(passport.initialize())
-app.use(passport.session()) // calls the deserializeUser
-
 app.use(session({
     secret: SECRET,
     store: new MongoStore({ 
         mongooseConnection: mongoDB 
     }),
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
 }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use(routes);
 

@@ -13,4 +13,4 @@ export default {
     postLogout: (logoutUser) => {
         return axios.post("/user/logout", logoutUser); 
     },
-}
+};
