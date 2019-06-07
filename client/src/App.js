@@ -88,7 +88,7 @@ class App extends Component {
               <Route path="/" exact render={() => <Home {...this.state} updateUser={this.updateUser} />} />
               <Route path="/Login" render={() => <Login updateUser={this.updateUser} />} />
               <Route path="/UserCreate" component={UserCreate} />
-              <Route path="Profile" render={() => <Profile {...this.state} />} />
+              <Route path="/Profile" render={() => <Profile {...this.state} />} />
             </Switch>
           </Router>
         </Grid>

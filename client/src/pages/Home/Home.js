@@ -49,11 +49,14 @@ export class Home extends Component {
       })
       .catch(err => console.log(err));
   };
+  componentDidMount() {
+    console.log(this.props)
+  }
   render() {
     const { cardProp, pageName } = this.state;
     return (
       <div>
-        <NavBar {...pageName} />
+        <NavBar {...this.props} {...pageName} />
         <Grid
           container
           direction="row"
@@ -72,7 +75,6 @@ export class Home extends Component {
               justify="center"
               >
                 {cardProp.map(index => {
-                  // console.log(index)
                   return(
                     <Grid
                       item
