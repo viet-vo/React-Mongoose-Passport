@@ -8,14 +8,14 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import getCurrentUser from './utils/API';
 // !^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-// Components
+// Pages/Components
 // !^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 import Home from './pages/Home';
 import Login from './pages/Login';
 import UserCreate from './pages/UserCreate';
+import Profile from './pages/Profile';
 // !^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-// import API from './utils/test';
 const theme = createMuiTheme({
   pallete: {
     primary: { main: "#546E7A" },
@@ -27,7 +27,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiButton: {
       root: {
-        color: 'white',
+        color: 'grey',
         '&:hover': {
           backgroundColor: 'purple'
         }
@@ -85,9 +85,10 @@ class App extends Component {
         <Grid>
           <Router>
             <Switch>
-              <Route path="/" exact render={() => <Home {...this.state} />} />
+              <Route path="/" exact render={() => <Home {...this.state} updateUser={this.updateUser} />} />
               <Route path="/Login" render={() => <Login updateUser={this.updateUser} />} />
               <Route path="/UserCreate" component={UserCreate} />
+              <Route path="Profile" render={() => <Profile {...this.state} />} />
             </Switch>
           </Router>
         </Grid>
