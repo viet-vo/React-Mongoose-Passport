@@ -16,6 +16,7 @@ export class Profile extends Component {
                     container
                     direction="row"
                     justify="center"
+                    spacing={0}
                 >
                     <Grid
                         item
@@ -48,7 +49,23 @@ export class Profile extends Component {
                         item
                         xs={9}
                     >   
-                        
+                         <Grid 
+                            container
+                            direction="column"
+                        >
+                            <Grid
+                                item
+                            >
+                                <Paper style={{margin: 8}}>
+                                    <Typography variant="h5" component="h3">
+                                        This is a Bio:
+                                    </Typography>
+                                    <Typography component="p">
+                                        {this.state.bio}
+                                    </Typography>
+                                </Paper>
+                            </Grid>
+                        </Grid>
                     </Grid> 
                 </Grid>
             </div>

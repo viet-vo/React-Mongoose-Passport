@@ -98,7 +98,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <NavBar {...this.state} />
+        <NavBar {...this.state} logout={this.logout} />
         <Router>
           <Switch>
             <Route path="/" exact render={
@@ -109,7 +109,7 @@ class App extends Component {
             } />
             <Route path="/UserCreate" component={UserCreate} />
             <Route path="/Profile" render={
-              () => <Profile {...this.state} logout={this.logout} />
+              () => <Profile {...this.state} />
             } />
             <Route component={NoMatch} />
           </Switch>

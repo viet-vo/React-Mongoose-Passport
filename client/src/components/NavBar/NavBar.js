@@ -22,6 +22,7 @@ const styles = {
 };
 
 function NavBar(props) {
+  console.log(props)
   const { classes, currentPage, loggedIn, username } = props;
   return (
     <div className={classes.root}>
