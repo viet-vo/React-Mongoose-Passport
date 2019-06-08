@@ -4,7 +4,6 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import NavBar from '../../components/NavBar';
 
 import submitDataAPI from '../../utils/API';
 
@@ -44,10 +43,8 @@ export class UserCreate extends Component {
     };
 
     render() {
-        const { page } = this.state;
         return (
             <div>
-                <NavBar {...page}/>
                 <Grid
                     container
                     spacing={0}

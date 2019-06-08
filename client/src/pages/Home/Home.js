@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import NavBar from '../../components/NavBar';
 import GridCard from '../../components/GridCard';
-import Button from '@material-ui/core/Button';
 import logoutAPI from '../../utils/API';
 
 export class Home extends Component {
@@ -53,10 +51,9 @@ export class Home extends Component {
     console.log(this.props)
   }
   render() {
-    const { cardProp, pageName } = this.state;
+    const { cardProp } = this.state;
     return (
       <div>
-        <NavBar {...this.props} {...pageName} />
         <Grid
           container
           direction="row"
@@ -107,9 +104,13 @@ export class Home extends Component {
                     Welcome to your Home Page
                   </Typography>
                   {this.props.loggedIn ? (
-                    <Button to="#" onClick={this.logout}>Logout</Button>
+                    <Typography variant="h5" component="h2" style={{margin: "1em"}}>
+                      {this.props.username}
+                    </Typography>
                   ) : (
-                    <Button to="/Login">Login</Button>
+                    <Typography variant="h5" component="h2" style={{margin: "1em"}}>
+                      Loading...
+                    </Typography>
                   )}
                 </Grid>
               </Paper>
@@ -127,7 +128,6 @@ export class Home extends Component {
               justify="center"
               >
                 {cardProp.map(index => {
-                  // console.log(index)
                   return(
                     <Grid
                       item
