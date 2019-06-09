@@ -29,4 +29,8 @@ router.route("/checkLogin")
 router.route("/logout")
     .post(userController.userLoggedOut);
 
+router.route("/bio")
+    .post(userController.updateBio)
+    .get(userController.getUserBio);
+
 module.exports = router;

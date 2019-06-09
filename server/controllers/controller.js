@@ -36,4 +36,17 @@ module.exports = {
             res.send({ msg: 'no user to log out' })
         };
     },
+    updateBio: function (req, res) {
+        db.UserModel
+            .findById(req._id)
+            .update(req.body)
+            .then(dbModel => req.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    getUserBio: function (req, res) {
+        db.UserModel
+            .findById(req._id)
+            .then(dbModel => res.json(dbModel.bio))
+            .catch(err => res.status)
+    }
 };
