@@ -20,11 +20,12 @@ export class Profile extends Component {
         const { id, value } = event.target;
         this.setState({ [id]: value });
     };
-    submitBio = event => {
+    submitUpdate = event => {
         event.preventDefault();
         api.postBio({
             _id: this.state._id,
             bio: this.state.bio,
+            age: this.state.age,
         })
         .then(res => {
             console.log('submit response: ');
@@ -42,10 +43,11 @@ export class Profile extends Component {
             console.log(res.data);
             if (res.status === 200) {
                 this.setState({
-                    bio: res.data.bio
+                    bio: res.data.bio,
+                    age: this.state.age,
                 })
-            }
-        })
+            };
+        });
     };
     render() {
         const bioExample = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
@@ -84,6 +86,9 @@ export class Profile extends Component {
                                     ) : (
                                         <Typography component="p">{bioExample}</Typography>
                                     )}
+                                    <Typography component="p">
+                                        {this.state.age}
+                                    </Typography>
                                 </Paper>
                             </Grid>
                         </Grid>
@@ -113,13 +118,22 @@ export class Profile extends Component {
                                         variant="outlined"
                                         onChange={this.updateInput.bind(this)}
                                     />
-                                <Button
-                                    style={{margin: "1em"}}
-                                    disabled={(!this.state.bio)}
-                                    onClick={this.submitBio}
-                                >
-                                    Save
-                                </Button>
+                                    <TextField
+                                        id="age"
+                                        label="Age"
+                                        value={this.state.age}
+                                        onChange={this.updateInput.bind(this)}
+                                        type="number"
+                                        InputLabelProps={{ shrink: true, }}
+                                        margin="normal"
+                                    />
+                                    <Button
+                                        style={{margin: "1em"}}
+                                        disabled={(!this.state.bio)}
+                                        onClick={this.submitUpdate}
+                                    >
+                                        Save
+                                    </Button>
                                 </Paper>
                             </Grid>
                         </Grid>
