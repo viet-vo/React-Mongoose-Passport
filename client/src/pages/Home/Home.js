@@ -2,32 +2,32 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import GridCard from '../../components/GridCard';
+// import GridCard from '../../components/GridCard';
 import logoutAPI from '../../utils/API';
 
 export class Home extends Component {
   state = {
     data: [],
-    cardProp: [
-      {
-        header: "Allen",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptate natus et dolorem molestias praesentium dicta explicabo illum voluptatibus, totam iste laudantium numquam accusantium quaerat debitis voluptatem quis magni odio.",
-        footer: "This is the information footer",
-        id: 0,
-      },
-      {
-        header: "Brian",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cumque itaque pariatur corrupti perspiciatis enim, impedit ducimus autem expedita debitis, amet nemo doloribus sequi eaque aliquid? Necessitatibus explicabo voluptates hic!",
-        footer: "This is the information footer",
-        id: 1,
-      },
-      {
-        header: "Pat",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem at quia cum alias distinctio officiis debitis, veritatis reiciendis nulla tempore molestiae? Architecto dolorum, tempore provident ut possimus at dolores.",
-        footer: "This is the information footer",
-        id: 2,
-      },
-    ],
+    // cardProp: [
+    //   {
+    //     header: "Allen",
+    //     body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptate natus et dolorem molestias praesentium dicta explicabo illum voluptatibus, totam iste laudantium numquam accusantium quaerat debitis voluptatem quis magni odio.",
+    //     footer: "This is the information footer",
+    //     id: 0,
+    //   },
+    //   {
+    //     header: "Brian",
+    //     body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cumque itaque pariatur corrupti perspiciatis enim, impedit ducimus autem expedita debitis, amet nemo doloribus sequi eaque aliquid? Necessitatibus explicabo voluptates hic!",
+    //     footer: "This is the information footer",
+    //     id: 1,
+    //   },
+    //   {
+    //     header: "Pat",
+    //     body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem at quia cum alias distinctio officiis debitis, veritatis reiciendis nulla tempore molestiae? Architecto dolorum, tempore provident ut possimus at dolores.",
+    //     footer: "This is the information footer",
+    //     id: 2,
+    //   },
+    // ],
     pageName: {
       name: "Home"
     }
@@ -51,20 +51,22 @@ export class Home extends Component {
     console.log(this.props)
   }
   render() {
-    const { cardProp } = this.state;
+    // const { cardProp } = this.state;
     return (
       <div>
         <Grid
           container
-          direction="row"
+          spacing={0}
+          direction="column"
           alignItems="center"
           justify="center"
+          style={{ minHeight: '75vh' }}
         >
           <Grid
             item
             xs={3}
           >
-            <Grid 
+            {/* <Grid 
               container
               spacing={8}
               direction="column"
@@ -81,7 +83,7 @@ export class Home extends Component {
                     </Grid>
                     )
                 })}
-              </Grid>
+              </Grid> */}
           </Grid>
           <Grid
             item
@@ -93,6 +95,7 @@ export class Home extends Component {
               direction="row"
               alignItems="center"
               justify="center"
+              style={{padding: 10}}
               >
               <Paper>
                 <Grid
@@ -100,13 +103,16 @@ export class Home extends Component {
                   alignItems="center"
                   direction="column"
                 > 
-                  <Typography variant="h5" component="h2" style={{margin: "1em"}}>
-                    Welcome to your Home Page
-                  </Typography>
+                  
                   {this.props.loggedIn ? (
-                    <Typography variant="h5" component="h2" style={{margin: "1em"}}>
-                      {this.props.username}
-                    </Typography>
+                    <div>
+                      <Typography variant="h5" component="h2" style={{margin: "1em"}}>
+                        Welcome to your Home Page
+                      </Typography>
+                      <Typography variant="h5" component="h2" style={{margin: "1em", textAlign: "center"}}>
+                        {this.props.username}
+                      </Typography>
+                    </div>
                   ) : (
                     <Typography variant="h5" component="h2" style={{margin: "1em"}}>
                       Loading...
@@ -120,7 +126,7 @@ export class Home extends Component {
             item
             xs={3}
           >
-            <Grid 
+            {/* <Grid 
               container
               spacing={8}
               direction="column"
@@ -137,7 +143,7 @@ export class Home extends Component {
                     </Grid>
                     )
                 })}
-              </Grid>
+              </Grid> */}
           </Grid>
         </Grid>
       </div>
