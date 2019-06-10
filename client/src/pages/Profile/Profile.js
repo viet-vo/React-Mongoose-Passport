@@ -11,46 +11,43 @@ export class Profile extends Component {
     state = {
         bio: "",
         data: [],
-        _id: "",
+        _id: this.props._id,
     };
     componentDidMount() {
-        this.getUser();
         this.loadBio();
     };
     updateInput = event => {
         const { id, value } = event.target;
         this.setState({ [id]: value });
     };
-    getUser() {
-        api.getUser()
+    submitBio = event => {
+        event.preventDefault();
+        api.postBio({
+            _id: this.state._id,
+            bio: this.state.bio,
+        })
         .then(res => {
-            console.log('Get user response: ');
-            console.log(res.data);
-            if (res.data.user) {
-                console.log('Get User: There is a user saved in the server session: ')
-                this.setState({
-                  loggedIn: true,
-                  username: res.data.user.username,
-                  _id: res.data.user._id,
-                });
-            } else {
-                console.log('Get user: no user');
-                this.setState({
-                  loggedIn: false,
-                  username: null,
-                });
-            };
-        });
-    };
+            console.log('submit response: ');
+            console.log(res);
+            if (res.status === 200) {
+                console.log("post successful")
+            }
+        })
+    }
     loadBio() {
+        console.log("called loadBio()")
         api.getBio(this.state._id)
         .then(res => {
             console.log("Get user bio: ");
             console.log(res.data);
+            if (res.status === 200) {
+                this.setState({
+                    bio: res.data.bio
+                })
+            }
         })
     };
     render() {
-        console.log(this.state)
         const bioExample = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
         return (
             <div>

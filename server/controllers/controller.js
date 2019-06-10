@@ -37,16 +37,16 @@ module.exports = {
         };
     },
     updateBio: function (req, res) {
+        console.log(req.body)
         db.UserModel
-            .findById(req._id)
-            .update(req.body)
-            .then(dbModel => req.json(dbModel))
+            .findOneAndUpdate({ _id: req.user._id }, req.body)
+            .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     getUserBio: function (req, res) {
         db.UserModel
-            .findById(req._id)
-            .then(dbModel => res.json(dbModel.bio))
-            .catch(err => res.status)
+            .findOne({ _id: req.user._id })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     }
 };

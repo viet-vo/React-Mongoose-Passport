@@ -23,7 +23,7 @@ const styles = {
 
 function NavBar(props) {
   console.log(props)
-  const { classes, currentPage, loggedIn, username } = props;
+  const { classes, loggedIn, } = props;
   return (
     <div className={classes.root}>
       <AppBar position="static" color="primary">
@@ -32,7 +32,7 @@ function NavBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            {username} {currentPage} Page
+            Mongo-Express-React-Node w/ a Material-UI front-end
           </Typography>
           {loggedIn ? (
             <div>

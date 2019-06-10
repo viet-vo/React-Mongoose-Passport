@@ -68,6 +68,7 @@ class App extends Component {
         this.setState({
           loggedIn: true,
           username: res.data.user.username,
+          _id: res.data.user._id,
         });
       } else {
         console.log('Get user: no user');
