@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import NavBar from '../../components/NavBar';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import submitDataAPI from '../../utils/API';
 
@@ -44,10 +44,8 @@ export class UserCreate extends Component {
     };
 
     render() {
-        const { page } = this.state;
         return (
             <div>
-                <NavBar {...page}/>
                 <Grid
                     container
                     spacing={0}
@@ -94,13 +92,20 @@ export class UserCreate extends Component {
                                 onChange={this.updateInput.bind(this)}
                                 style={{margin: "0.5em"}}
                             />
-                            <Button
-                                style={{margin: "1em"}}
-                                disabled={!(this.state.username && this.state.password)}
-                                onClick={this.handleFormSubmit}
+                            <Tooltip
+                                title="------ Submit the user login information in the form of ------ 
+                                {username: this.state.username, password: this.state.password, 
+                                firstname: this.state.firstname, lastname: this.state.lastname} -------
+                                All the user information is entered into the database accordingly except for the password which is encrypted using bcrypt "
                             >
-                                Submit
-                            </Button>
+                                <Button
+                                    style={{margin: "1em"}}
+                                    disabled={!(this.state.username && this.state.password)}
+                                    onClick={this.handleFormSubmit}
+                                >
+                                    Submit
+                                </Button>
+                            </Tooltip>
                         </Grid>
                     </Paper>
                 </Grid>
