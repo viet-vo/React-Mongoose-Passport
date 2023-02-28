@@ -44,7 +44,7 @@ function NavBar(props) {
               <Tooltip 
                 title='Sends a post request to the backend to logout the current user'
               >
-                <Button href="" onClick={props.logout} color="inherit">Logout</Button>
+                <Button href="/" onClick={props.logout} color="inherit">Logout</Button>
               </Tooltip>
               <Tooltip 
                 title='Routes to "/Profile"'

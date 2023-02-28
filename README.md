@@ -28,7 +28,7 @@ Open a browser to localhost://3000 to view application
 
 ### Notes
 - There are tooltips detailing the project's function.
-- Sign up before logging in since there are scripts to added original user... YET!
+- Sign up before logging in.
 
 ## Contributing
 Suggestions of new additions to the project can be sent to email: viet.allen.qvo@gmail.com

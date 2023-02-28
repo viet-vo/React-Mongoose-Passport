@@ -33,34 +33,40 @@ const userSchema = new Schema(
     },
   },
   {
-    versionKey: false
+    versionKey: false,
   }
 );
 
-userSchema.pre("save", function(next) {
-    var user = this;
-    if (!user.isModified("password")) {
-      return next();
-    }
-    bcrypt.hash(user.password, SALT).then(hashedPassword => {
-      user.password = hashedPassword;
-      next();
-    })
-    .catch(err);
-  },
-  function(err) {
-    next(err);
-  }
-);
+// userSchema.pre(
+//   "save",
+//   function (next) {
+//     var user = this;
+//     console.log(user);
+//     if (!user.isModified("password")) {
+//       return next();
+//     }
+//     bcrypt
+//       .hash(user.password, SALT)
+//       .then((hashedPassword) => {
+//         user.password = hashedPassword;
+//         next();
+//       })
+//       .catch(err);
+//   },
+//   function (err) {
+//     next(err);
+//   }
+// );
 
 userSchema.methods = {
-	checkPassword: function (inputPassword) {
-		return bcrypt.compareSync(inputPassword, this.password)
-	},
-	hashPassword: plainTextPassword => {
-		return bcrypt.hashSync(plainTextPassword, 10)
-	}
-}
+  checkPassword: function (inputPassword) {
+    // return bcrypt.compareSync(inputPassword, this.password);
+    return(inputPassword, this.password);
+  },
+  hashPassword: (plainTextPassword) => {
+    return bcrypt.hashSync(plainTextPassword, 10);
+  },
+};
 
 const User = mongoose.model("Users", userSchema);
 
